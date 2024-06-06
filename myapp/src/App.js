@@ -1,4 +1,6 @@
+import React from 'react';
 import './App.css';
+import StickerChoice from './components/stickerchoice'; // Import StickerChoice component
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <p>My third vision</p>
         </div>
       </div>
+      <StickerChoice /> {/* Include StickerChoice component */}
     </div>
   );
 }
