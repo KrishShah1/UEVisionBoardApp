@@ -11,7 +11,7 @@ function App() {
       <BoardChoice selectedImage={selectedImage} onImageSelect={setSelectedImage} />
       {selectedImage && (
         <div>
-          <h2>Selected Board Style:</h2>
+          <h2>Chosen Board Style:</h2>
           <img src={selectedImage} alt="Selected" />
         </div>
       )}
