@@ -1,27 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import BoardChoice from './components/BoardChoice';
 import './App.css';
-import img1 from './public/img1.png';
-import img2 from './public/img2.png';
-import img3 from './public/img3.png';
 
 function App() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <div className="App">
-      <div className="vision-board">
-        <h1>My Vision Board</h1>
-        <div className="vision-item">
-          <img src={img1} alt="Vision 1" />
-          <p>My first vision</p>
+      <h1>Choose your Design</h1>
+      <BoardChoice selectedImage={selectedImage} onImageSelect={setSelectedImage} />
+      {selectedImage && (
+        <div>
+          <h2>Selected Board Style:</h2>
+          <img src={selectedImage} alt="Selected" />
         </div>
-        <div className="vision-item">
-          <img src={img2} alt="Vision 2" />
-          <p>My second vision</p>
-        </div>
-        <div className="vision-item">
-          <img src={img3} alt="Vision 3" />
-          <p>My third vision</p>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
