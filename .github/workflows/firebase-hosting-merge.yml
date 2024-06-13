@@ -22,7 +22,8 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_UEREACTA }}
+          firebaseServiceAccount: ${{ FIREBASE_SERVICE_ACCOUNT_UCR_XCITE_UE_VISIONBOARD_APP }}
           channelId: live
-          projectId: uereacta
+          projectId: ucr-xcite-ue-visionboard-app
+
           entryPoint: myapp # Specify the correct path to firebase.json
