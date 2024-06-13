@@ -13,6 +13,8 @@ function App() {
         <div>
           <h2>Chosen Board Style:</h2>
           <img src={selectedImage} alt="Selected" />
+
+          <h1> ADD CODE AND TEXT </h1>
         </div>
       )}
     </div>
