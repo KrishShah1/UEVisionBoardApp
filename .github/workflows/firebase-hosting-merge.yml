@@ -22,7 +22,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ FIREBASE_SERVICE_ACCOUNT_UCR_XCITE_UEREACTA }}
+          firebaseServiceAccount: ${{ FIREBASE_SERVICE_ACCOUNT_UEREACTA }}
           channelId: live
           projectId: uereacta
 
