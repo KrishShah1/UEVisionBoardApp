@@ -13,6 +13,7 @@ const BoardChoice = ({ selectedImage, onImageSelect }) => {
   return (
     <div>
       <h1>Board Choice</h1>
+      <h1> THESE ARE OUR COMPONENTS </h1>
       <div>
         <img
           style={imageStyle}
