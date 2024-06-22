@@ -1,38 +1,51 @@
+/* App.css */
+
+/* Centering container for the board choice section */
 .App {
   text-align: center;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Overlay container to position elements relative to each other */
+.overlay-container {
+  position: relative;
+  width: 300px;  /* Adjust the width as needed */
+  height: 300px; /* Adjust the height as needed */
+  margin: 0 auto; /* Center the container */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Background image styling */
+.background-image {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Circular image styling */
+.circular-image {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  bottom: 10px;  /* Positioning from the bottom */
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.App-link {
-  color: #61dafb;
+/* Button styling for the start button */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Hover effect for the button */
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }

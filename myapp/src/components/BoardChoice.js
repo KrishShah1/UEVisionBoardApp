@@ -7,30 +7,28 @@ const BoardChoice = ({ selectedImage, onImageSelect }) => {
 
   const publicUrl = process.env.PUBLIC_URL;
 
-  // Inline style for images
   const imageStyle = { width: '300px', height: '300px' };
 
   return (
     <div>
-      <h1>Board Choice</h1>
-      <h1> THESE ARE OUR COMPONENTS </h1>
+      <h1>Choose your Background</h1>
       <div>
         <img
           style={imageStyle}
           src={`${publicUrl}/img1.png`}
-          alt="Board 1"
+          alt="Background 1"
           onClick={() => handleImageClick(`${publicUrl}/img1.png`)}
         />
         <img
           style={imageStyle}
           src={`${publicUrl}/img2.png`}
-          alt="Board 2"
+          alt="Background 2"
           onClick={() => handleImageClick(`${publicUrl}/img2.png`)}
         />
         <img
           style={imageStyle}
           src={`${publicUrl}/img3.png`}
-          alt="Board 3"
+          alt="Background 3"
           onClick={() => handleImageClick(`${publicUrl}/img3.png`)}
         />
       </div>
