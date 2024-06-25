@@ -20,7 +20,11 @@ function App() {
           <button onClick={() => setStep('camera')}>Start</button>
         </div>
       )}
-      {step === 'camera' && <CameraComponent onCapture={handleImageCapture} />}
+      {step === 'camera' && (
+        <div className="webcam-container">
+          <CameraComponent onCapture={handleImageCapture} />
+        </div>
+      )}
       {step === 'boardChoice' && (
         <div>
           <h1>Choose your Design</h1>
