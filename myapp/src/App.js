@@ -1,15 +1,33 @@
 import React, { useState } from 'react';
 import BoardChoice from './components/BoardChoice';
 import CameraComponent from './components/CameraComponent';
+import FinalBoard from './components/FinalBoard';
 import './App.css';
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedBackground, setSelectedBackground] = useState(null);
   const [step, setStep] = useState('start');
 
   const handleImageCapture = (image) => {
     setSelectedImage(image);
     setStep('boardChoice');
+  };
+
+  const handleBackgroundSelect = (backgroundImage) => {
+    setSelectedBackground(backgroundImage);
+  };
+
+  const handleConfirm = () => {
+    setStep('finalBoard');
+  };
+
+  const handleBackToBoardChoice = () => {
+    setStep('boardChoice');
+  };
+
+  const handleBackToCamera = () => {
+    setStep('camera');
   };
 
   return (
@@ -26,19 +44,16 @@ function App() {
         </div>
       )}
       {step === 'boardChoice' && (
-        <div>
-          <h1>Choose your Design</h1>
-          <BoardChoice selectedImage={selectedImage} onImageSelect={setSelectedImage} />
-          {selectedImage && (
-            <div>
-              <h2>Chosen Board Style:</h2>
-              <div className="overlay-container">
-                <img className="background-image" src={process.env.PUBLIC_URL + '/boardBackground.png'} alt="Background" />
-                <img className="circular-image" src={selectedImage} alt="Selected" />
-              </div>
-            </div>
-          )}
-        </div>
+        <BoardChoice
+          selectedImage={selectedImage}
+          onBackgroundSelect={handleBackgroundSelect}
+          selectedBackground={selectedBackground}
+          onConfirm={handleConfirm}
+          onBack={handleBackToCamera}
+        />
+      )}
+      {step === 'finalBoard' && (
+        <FinalBoard background={selectedBackground} image={selectedImage} onBack={handleBackToBoardChoice} />
       )}
     </div>
   );
