@@ -13,6 +13,7 @@ const CameraComponent = ({ onCapture }) => {
     <div>
       <div>
         <h1>Capture your Vision</h1>
+
         <Webcam
           audio={false}
           ref={webcamRef}
@@ -20,10 +21,13 @@ const CameraComponent = ({ onCapture }) => {
           width={400}
           height={300}
         />
+
       </div>
+
       <div>
         <button onClick={capture}>Capture</button>
       </div>
+      
     </div>
   );
 };
