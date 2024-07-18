@@ -81,6 +81,7 @@ function App() {
       {step === 'DragAndDrop' && (
         <DragAndDrop 
           onBack={handleBackToBoardChoice} 
+          background={selectedBackground}
         />
       )}
 

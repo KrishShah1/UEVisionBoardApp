@@ -39,7 +39,7 @@ function DragAndDrop({ onBack }) {
 
   const labels = {
     drop1: "I am looking forward to...",
-    drop2: "I am excited to...",
+    drop2: "I am excited to work on...",
     drop3: "This opportunity interests me",
     drop4: "I will learn from..."
   };

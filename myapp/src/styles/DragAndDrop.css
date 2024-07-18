@@ -9,13 +9,19 @@
   padding: 20px;
   border: 2px solid #ccc;
   min-height: 200px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .drop-locations-container {
   display: flex;
   flex-wrap: wrap;
   width: 75%;
+  min-height: 200px;
+  max-height: 80vh;
   justify-content: space-between;
+  /* background-image: url("../../public/img1.png");
+  background-size: fit; */
 }
 
 .drop-container {
