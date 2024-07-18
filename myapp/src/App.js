@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BoardChoice from './components/BoardChoice';
 import CameraComponent from './components/CameraComponent';
-import FinalBoard from './components/FinalBoard';
+// import FinalBoard from './components/FinalBoard';
 import LandingPage from './components/LandingPage';
 import DragAndDrop from './components/DragAndDrop';
 // import './App.css';
@@ -25,9 +25,9 @@ function App() {
     setStep('camera');
   };
 
-  const handleToFinalBoard = () => {
-    setStep('finalBoard');
-  };
+  // const handleToFinalBoard = () => {
+  //   setStep('finalBoard');
+  // };
 
   const handleBackToBoardChoice = () => {
     setStep('boardChoice');
@@ -37,9 +37,9 @@ function App() {
     setStep('DragAndDrop');
   };
 
-  const handleBackToFinalBoard = () => {
-    setStep('finalBoard');
-  };
+  // const handleBackToFinalBoard = () => {
+  //   setStep('finalBoard');
+  // };
 
   const handleBackgroundSelect = (backgroundImage) => {
     setSelectedBackground(backgroundImage);
@@ -64,23 +64,23 @@ function App() {
           selectedImage={selectedImage}
           onBackgroundSelect={handleBackgroundSelect}
           selectedBackground={selectedBackground}
-          onConfirm={handleToFinalBoard}
+          onConfirm={handleDragAndDrop}
           onBack={handleBackToCamera}
         />
       )}
 
-      {step === 'finalBoard' && (
+      {/* {step === 'finalBoard' && (
         <FinalBoard 
           background={selectedBackground} 
           image={selectedImage} 
           onBack={handleBackToBoardChoice} 
           onConfirm={handleDragAndDrop}
         />
-      )}
+      )} */}
 
       {step === 'DragAndDrop' && (
         <DragAndDrop 
-          onBack={handleBackToFinalBoard} 
+          onBack={handleBackToBoardChoice} 
         />
       )}
 

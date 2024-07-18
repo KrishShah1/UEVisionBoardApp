@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/FinalBoard.css';
 
 const FinalBoard = ({ background, image, onBack, onConfirm }) => {
   return (
