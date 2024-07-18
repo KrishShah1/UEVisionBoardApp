@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import BoardChoice from './components/BoardChoice';
 import CameraComponent from './components/CameraComponent';
 import FinalBoard from './components/FinalBoard';
-import './App.css';
+import LandingPage from './components/LandingPage';
+// import './App.css';
 
 function App() {
   
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedBackground, setSelectedBackground] = useState(null);
   const [step, setStep] = useState('start');
+
+  const handleCreateBoard = () => {
+    setStep('camera');
+  };
 
   const handleImageCapture = (image) => {
     setSelectedImage(image);
@@ -35,10 +40,7 @@ function App() {
     <div className="App">
 
       {step === 'start' && (
-        <div>
-          <h1>Start Your Vision Board</h1>
-          <button onClick={() => setStep('camera')}>Start</button>
-        </div>
+        <LandingPage onCreate={handleCreateBoard} />
       )}
 
       {step === 'camera' && (
