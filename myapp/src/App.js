@@ -3,6 +3,7 @@ import BoardChoice from './components/BoardChoice';
 import CameraComponent from './components/CameraComponent';
 import FinalBoard from './components/FinalBoard';
 import LandingPage from './components/LandingPage';
+import DragAndDrop from './components/DragAndDrop';
 // import './App.css';
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
     setStep('boardChoice');
   };
 
-  const handleBackgroundSelect = (backgroundImage) => {
-    setSelectedBackground(backgroundImage);
+  const handleBackToCamera = () => {
+    setStep('camera');
   };
 
   const handleToFinalBoard = () => {
@@ -32,9 +33,18 @@ function App() {
     setStep('boardChoice');
   };
 
-  const handleBackToCamera = () => {
-    setStep('camera');
+  const handleDragAndDrop = () => {
+    setStep('DragAndDrop');
   };
+
+  const handleBackToFinalBoard = () => {
+    setStep('finalBoard');
+  };
+
+  const handleBackgroundSelect = (backgroundImage) => {
+    setSelectedBackground(backgroundImage);
+  };
+
 
   return (
     <div className="App">
@@ -64,6 +74,13 @@ function App() {
           background={selectedBackground} 
           image={selectedImage} 
           onBack={handleBackToBoardChoice} 
+          onConfirm={handleDragAndDrop}
+        />
+      )}
+
+      {step === 'DragAndDrop' && (
+        <DragAndDrop 
+          onBack={handleBackToFinalBoard} 
         />
       )}
 

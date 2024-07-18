@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FinalBoard = ({ background, image, onBack }) => {
+const FinalBoard = ({ background, image, onBack, onConfirm }) => {
   return (
     <div className="final-board">
 
@@ -10,6 +10,7 @@ const FinalBoard = ({ background, image, onBack }) => {
       </div>
       
       <button onClick={onBack}>Back</button>
+      <button onClick={onConfirm}>Confirm</button>
 
     </div>
   );

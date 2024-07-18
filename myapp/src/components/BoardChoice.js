@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/BoardChoice.css';
 
 const BoardChoice = ({ selectedImage, onBackgroundSelect, selectedBackground, onConfirm, onBack }) => {
   

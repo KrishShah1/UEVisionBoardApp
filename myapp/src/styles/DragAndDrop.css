@@ -1,0 +1,40 @@
+.drag-and-drop-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.items-container {
+  width: 20%;
+  padding: 20px;
+  border: 2px solid #ccc;
+  min-height: 200px;
+}
+
+.drop-locations-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 75%;
+  justify-content: space-between;
+}
+
+.drop-container {
+  width: 45%;
+  padding: 20px;
+  border: 2px solid #ccc;
+  min-height: 200px;
+  margin-bottom: 20px;
+}
+
+.draggable-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: lightblue;
+  cursor: move;
+}
+
+.dropped-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: lightgreen;
+}
