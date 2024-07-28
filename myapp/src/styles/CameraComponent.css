@@ -25,27 +25,72 @@
     text-align: center;
 }
 
-.camera-container {
-    flex: 1;
+.body {
     display: flex;
-    flex-direction: column;
+    height: calc(100vh - 6em);
+}
+
+.left-container {
+    width: 50%;
+    height: 100%;
+    border-right: #888888 solid 2px;
+}
+
+.theme-select {
+    height: calc(100% - 6em);
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    row-gap: 3em;
+    padding: 3em 1.3em;
+}
+
+.theme-select img {
+    border: solid 1px lightgray;
+    border-radius: 1em;
+    height: 275px;
+    background-color: lightgray;
+    transition: all 0.3s ease;
+}
+
+.theme-select img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    border: solid 1px black
+}
+
+.right-container {
+    height: 100%;
+    width: 50%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.camera-container .webcam{
-    position: absolute;
-    border-radius: 0.5em;
-    z-index: -1;
+.overlay {
+    aspect-ratio: 11/17;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 0 10px 5px #888888;
+    border-radius: 1em;
 }
 
-.camera-container img{
-    margin-top: 40em;
-    height: 50px;
+.webcam{
+    height: 100%;
+}
+
+.capture-button{
+    position: absolute;
+    top: 45em;
+    height: 75px;
     transition: all 0.3s ease;
 }
 
-.camera-container img:hover{
-    transform: scale(1.5);
+.capture-button:hover{
+    transform: scale(1.2);
     cursor: pointer;
-}
+} 

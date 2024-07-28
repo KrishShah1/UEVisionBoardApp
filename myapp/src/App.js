@@ -6,35 +6,35 @@ import LandingPage from './components/LandingPage';
 // import './App.css';
 
 function App() {
-  
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedBackground, setSelectedBackground] = useState(null);
-  const [step, setStep] = useState('start');
 
-  const handleCreateBoard = () => {
-    setStep('camera');
-  };
+  const [step, setStep] = useState('start');
+  const [selectedTheme, setSelectedTheme] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageCapture = (image) => {
     setSelectedImage(image);
     setStep('boardChoice');
   };
 
-  const handleBackgroundSelect = (backgroundImage) => {
-    setSelectedBackground(backgroundImage);
-  };
-
-  const handleToFinalBoard = () => {
-    setStep('finalBoard');
-  };
-
-  const handleBackToBoardChoice = () => {
-    setStep('boardChoice');
-  };
-
-  const handleBackToCamera = () => {
+  const handleCreateBoard = () => {
     setStep('camera');
   };
+
+  // const handleBackgroundSelect = (backgroundImage) => {
+  //   setSelectedBackground(backgroundImage);
+  // };
+
+  // const handleToFinalBoard = () => {
+  //   setStep('finalBoard');
+  // };
+
+  // const handleBackToBoardChoice = () => {
+  //   setStep('boardChoice');
+  // };
+
+  // const handleBackToCamera = () => {
+  //   setStep('camera');
+  // };
 
   return (
     <div className="App">
@@ -44,12 +44,10 @@ function App() {
       )}
 
       {step === 'camera' && (
-        <div className="webcam-container">
           <CameraComponent onCapture={handleImageCapture} />
-        </div>
       )}
 
-      {step === 'boardChoice' && (
+      {/* {step === 'boardChoice' && (
         <BoardChoice
           selectedImage={selectedImage}
           onBackgroundSelect={handleBackgroundSelect}
@@ -65,7 +63,7 @@ function App() {
           image={selectedImage} 
           onBack={handleBackToBoardChoice} 
         />
-      )}
+      )} */}
 
     </div>
   );
