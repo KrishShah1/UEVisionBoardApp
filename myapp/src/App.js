@@ -3,11 +3,8 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import BoardChoice from './components/BoardChoice';
 import CameraComponent from './components/CameraComponent';
-// import FinalBoard from './components/FinalBoard';
 import LandingPage from './components/LandingPage';
 import { DragAndDrop } from './components/DragAndDrop';
-
-// import './App.css';
 
 function App() {
   
@@ -28,10 +25,6 @@ function App() {
     setStep('camera');
   };
 
-  // const handleToFinalBoard = () => {
-  //   setStep('finalBoard');
-  // };
-
   const handleBackToBoardChoice = () => {
     setStep('boardChoice');
   };
@@ -39,10 +32,6 @@ function App() {
   const handleDragAndDrop = () => {
     setStep('DragAndDrop');
   };
-
-  // const handleBackToFinalBoard = () => {
-  //   setStep('finalBoard');
-  // };
 
   const handleBackgroundSelect = (backgroundImage) => {
     setSelectedBackground(backgroundImage);
@@ -70,16 +59,7 @@ function App() {
             onBack={handleBackToCamera}
           />
         )}
-
-        {/* {step === 'finalBoard' && (
-          <FinalBoard 
-            background={selectedBackground} 
-            image={selectedImage} 
-            onBack={handleBackToBoardChoice} 
-            onConfirm={handleDragAndDrop}
-          />
-        )} */}
-
+        
         {step === 'DragAndDrop' && (
           <DragAndDrop 
             onBack={handleBackToBoardChoice} 

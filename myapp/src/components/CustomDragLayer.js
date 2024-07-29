@@ -1,6 +1,7 @@
 import { useDragLayer } from 'react-dnd'
 import { ItemTypes } from './ItemTypes.js'
-import { Box } from './Box.js'
+import { DraggableBox } from './DraggableBox.js'
+
 const layerStyles = {
   position: 'fixed',
   pointerEvents: 'none',
@@ -35,7 +36,7 @@ export const CustomDragLayer = (props) => {
   function renderItem() {
     switch (itemType) {
       case ItemTypes.BOX:
-        return <Box title={item.title} />
+        return <DraggableBox title={item.title} />
       default:
         return null
     }

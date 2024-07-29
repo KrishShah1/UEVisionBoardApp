@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDrag } from 'react-dnd';
 import { ItemTypes } from './ItemTypes';
 import { Box } from './Box';
 
 const DraggableBox = ({ id, title, left, top }) => {
-  const [{ isDragging }, drag, preview] = useDrag(
+  const [{ isDragging }, drag] = useDrag(
     () => ({
       type: ItemTypes.BOX,
       item: { id, left, top, title },
@@ -14,11 +14,6 @@ const DraggableBox = ({ id, title, left, top }) => {
     }),
     [id, left, top, title]
   );
-
-  useEffect(() => {
-    // This effect ensures the preview is updated
-    preview();
-  }, [preview]);
 
   if (isDragging) {
     return <div ref={drag} />;

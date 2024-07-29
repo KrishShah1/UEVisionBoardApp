@@ -4,8 +4,8 @@ import { useDrop } from 'react-dnd'
 import { DraggableBox } from './DraggableBox.js'
 import { ItemTypes } from './ItemTypes.js'
 const styles = {
-  width: 1000,
-  height: 1000,
+  width: 800,
+  height: 800,
   border: '1px solid black',
   position: 'relative',
   backgroundImage: 'url(/2.png)',
