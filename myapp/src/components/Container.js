@@ -3,17 +3,19 @@ import { useCallback, useState } from 'react'
 import { useDrop } from 'react-dnd'
 import { DraggableBox } from './DraggableBox.js'
 import { ItemTypes } from './ItemTypes.js'
-import { snapToGrid as doSnapToGrid } from './snaptoGrid.js'
 const styles = {
-  width: 300,
-  height: 300,
+  width: 1000,
+  height: 1000,
   border: '1px solid black',
   position: 'relative',
+  backgroundImage: 'url(/2.png)',
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
 }
-export const Container = ({ snapToGrid }) => {
+export const Container = () => {
   const [boxes, setBoxes] = useState({
-    a: { top: 20, left: 80, title: 'Drag me around' },
-    b: { top: 180, left: 20, title: 'Drag me too' },
+    a: { top: 10, left: 850, title: 'UCDC' },
+    b: { top: 50, left: 850, title: "R'Courses" },
   })
   const moveBox = useCallback(
     (id, left, top) => {
@@ -34,9 +36,6 @@ export const Container = ({ snapToGrid }) => {
         const delta = monitor.getDifferenceFromInitialOffset()
         let left = Math.round(item.left + delta.x)
         let top = Math.round(item.top + delta.y)
-        if (snapToGrid) {
-          ;[left, top] = doSnapToGrid(left, top)
-        }
         moveBox(item.id, left, top)
         return undefined
       },

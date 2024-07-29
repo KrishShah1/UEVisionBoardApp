@@ -5,7 +5,8 @@ import BoardChoice from './components/BoardChoice';
 import CameraComponent from './components/CameraComponent';
 // import FinalBoard from './components/FinalBoard';
 import LandingPage from './components/LandingPage';
-import DragAndDrop from './components/DragAndDrop';
+import { DragAndDrop } from './components/DragAndDrop';
+
 // import './App.css';
 
 function App() {
