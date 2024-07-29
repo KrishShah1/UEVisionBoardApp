@@ -1,69 +1,42 @@
 import React, { useState } from 'react';
-import BoardChoice from './components/BoardChoice';
-import CameraComponent from './components/CameraComponent';
-import FinalBoard from './components/FinalBoard';
+import CameraPage from './components/CameraPage';
 import LandingPage from './components/LandingPage';
-// import './App.css';
+import StickerPage from './components/StickerPage';
 
 function App() {
 
   const [step, setStep] = useState('start');
-  const [selectedTheme, setSelectedTheme] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selfie, setSelfie] = useState(null);
+  const [theme, setTheme] = useState(null);
 
-  const handleImageCapture = (image) => {
-    setSelectedImage(image);
-    setStep('boardChoice');
-  };
-
-  const handleCreateBoard = () => {
+  const createBoard = () => {
     setStep('camera');
   };
+  
+  const confirmSelfieAndTheme = (tempSelfie, tempTheme) => {
+    setSelfie(tempSelfie);
+    setTheme(tempTheme);
+    setStep('edit');
+  };
 
-  // const handleBackgroundSelect = (backgroundImage) => {
-  //   setSelectedBackground(backgroundImage);
-  // };
-
-  // const handleToFinalBoard = () => {
-  //   setStep('finalBoard');
-  // };
-
-  // const handleBackToBoardChoice = () => {
-  //   setStep('boardChoice');
-  // };
-
-  // const handleBackToCamera = () => {
-  //   setStep('camera');
-  // };
+  const restart = () => {
+    setStep('start');
+  }
 
   return (
     <div className="App">
 
       {step === 'start' && (
-        <LandingPage onCreate={handleCreateBoard} />
+        <LandingPage Create={createBoard} />
       )}
 
       {step === 'camera' && (
-          <CameraComponent onCapture={handleImageCapture} />
+          <CameraPage Confirm={confirmSelfieAndTheme}/>
       )}
 
-      {/* {step === 'boardChoice' && (
-        <BoardChoice
-          selectedImage={selectedImage}
-          onBackgroundSelect={handleBackgroundSelect}
-          selectedBackground={selectedBackground}
-          onConfirm={handleToFinalBoard}
-          onBack={handleBackToCamera}
-        />
+      {step === 'edit' && (
+        <StickerPage selfie={selfie} theme={theme} Restart={restart}/>
       )}
-
-      {step === 'finalBoard' && (
-        <FinalBoard 
-          background={selectedBackground} 
-          image={selectedImage} 
-          onBack={handleBackToBoardChoice} 
-        />
-      )} */}
 
     </div>
   );

@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.camera-page {
+.sticker-page {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -17,6 +17,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
+    box-shadow: 0 0 10px 5px #888888;
 }
 
 .header h1 {
@@ -33,42 +35,40 @@
 .left-container {
     width: 50%;
     height: 100%;
-    border-right: #888888 solid 2px;
+    z-index: 1;
 }
 
-.theme-select {
+.sticker-select {
     height: calc(100% - 6em);
     overflow: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: center;
     row-gap: 3em;
     padding: 3em 1.3em;
 }
 
-.theme-select img {
-    border: solid 1px lightgray;
-    border-radius: 1em;
-    height: 275px;
-    background-color: lightgray;
+.sticker-select img {
+    height: 100px;
     transition: all 0.3s ease;
 }
 
-.theme-select img:hover {
-    transform: scale(1.1);
+.sticker-select img:hover {
+    transform: scale(1.2);
     cursor: pointer;
-    border: solid 1px black
 }
 
 .right-container {
     height: 100%;
     width: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+    position: relative;
+}   
 
-.overlay {
+.overlay-container {
     aspect-ratio: 11/17;
     height: 90%;
     display: flex;
@@ -77,20 +77,50 @@
     overflow: hidden;
     box-shadow: 0 0 10px 5px #888888;
     border-radius: 1em;
+    position: relative;
 }
 
-.webcam{
+.final-selfie {
+    position: absolute;
     height: 100%;
 }
 
-.capture-button{
+.final-theme {
     position: absolute;
-    top: 45em;
-    height: 75px;
+    height: 100%;
+}
+
+.side {
+    position: absolute;
+    bottom: 0;
+    border-radius: 12px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-size: 18px;
+    padding: 15px 20px;
     transition: all 0.3s ease;
 }
 
-.capture-button:hover{
-    transform: scale(1.2);
+.clear {
+    left: 0;
+    background-color: #EA4C89;
+    /* z-index: -1; */
+}
+
+.print {
+    right: 0;
+    background-color: #309d4f;
+}
+
+.clear:hover {
     cursor: pointer;
-} 
+    box-shadow: 0 0 10px 3px #888888;
+    background-color: #e82f76;
+}
+
+.print:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 3px #888888;
+    background-color: #039e2f;
+}

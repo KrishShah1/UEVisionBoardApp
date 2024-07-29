@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/LandingPage.css';
 
-const LandingPage = ({onCreate}) => {
+const LandingPage = ({ Create }) => {
 
   return (
     <div className='landing-page'>
@@ -14,7 +14,7 @@ const LandingPage = ({onCreate}) => {
           <h2>Customize With Stickers</h2>
           <h2>Print Your Poster</h2>
         </div> */}
-        <button onClick={onCreate}>Create Your Vision</button>
+        <button onClick={Create}>Create Your Vision</button>
       </div>
     </div>
   );
