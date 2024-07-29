@@ -1,6 +1,6 @@
-import { useDragLayer } from 'react-dnd'
-import { ItemTypes } from './ItemTypes.js'
-import { DraggableBox } from './DraggableBox.js'
+import { useDragLayer } from 'react-dnd';
+import { ItemTypes } from './ItemTypes';
+import { DraggableBox } from './DraggableBox';
 
 const layerStyles = {
   position: 'fixed',
@@ -10,47 +10,49 @@ const layerStyles = {
   top: 0,
   width: '100%',
   height: '100%',
-}
-function getItemStyles(initialOffset, currentOffset, isSnapToGrid) {
-  if (!initialOffset || !currentOffset) {
+};
+
+function getItemStyles(initialOffset, isSnapToGrid) {
+  if (!initialOffset) {
     return {
       display: 'none',
-    }
+    };
   }
-  let { x, y } = currentOffset
-  const transform = `translate(${x}px, ${y}px)`
+
+  const { x, y } = initialOffset;
+  const transform = `translate(${x}px, ${y}px)`;
   return {
     transform,
     WebkitTransform: transform,
-  }
+  };
 }
+
 export const CustomDragLayer = (props) => {
-  const { itemType, isDragging, item, initialOffset, currentOffset } =
-    useDragLayer((monitor) => ({
-      item: monitor.getItem(),
-      itemType: monitor.getItemType(),
-      initialOffset: monitor.getInitialSourceClientOffset(),
-      currentOffset: monitor.getSourceClientOffset(),
-      isDragging: monitor.isDragging(),
-    }))
+  const { itemType, isDragging, item, initialOffset } = useDragLayer((monitor) => ({
+    item: monitor.getItem(),
+    itemType: monitor.getItemType(),
+    initialOffset: monitor.getInitialSourceClientOffset(),
+    isDragging: monitor.isDragging(),
+  }));
+
   function renderItem() {
     switch (itemType) {
       case ItemTypes.BOX:
-        return <DraggableBox title={item.title} />
+        return <DraggableBox title={item.title} />;
       default:
-        return null
+        return null;
     }
   }
+
   if (!isDragging) {
-    return null
+    return null;
   }
+
   return (
     <div style={layerStyles}>
-      <div
-        style={getItemStyles(initialOffset, currentOffset, props.snapToGrid)}
-      >
+      <div style={getItemStyles(initialOffset, props.snapToGrid)}>
         {renderItem()}
       </div>
     </div>
-  )
-}
+  );
+};

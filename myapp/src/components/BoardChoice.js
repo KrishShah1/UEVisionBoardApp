@@ -9,7 +9,7 @@ const BoardChoice = ({ selectedImage, onBackgroundSelect, selectedBackground, on
 
   const publicUrl = process.env.PUBLIC_URL;
 
-  const backgroundToShow = selectedBackground || `${publicUrl}/img1.png`;
+  const backgroundToShow = selectedBackground || `${publicUrl}/2.png`;
 
   return (
     <div>
@@ -18,9 +18,9 @@ const BoardChoice = ({ selectedImage, onBackgroundSelect, selectedBackground, on
       <div className="board-choice-container">
 
         <img
-          src={`${publicUrl}/img1.png`}
+          src={`${publicUrl}/2.png`}
           alt="Board 1"
-          onClick={() => handleBackgroundClick(`${publicUrl}/img1.png`)}
+          onClick={() => handleBackgroundClick(`${publicUrl}/2.png`)}
         />
 
         <img

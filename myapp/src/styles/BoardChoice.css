@@ -8,8 +8,8 @@
 }
 
 .board-choice-container img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s;
@@ -36,10 +36,11 @@
 
 .final-board-container {
     position: relative;
-    width: 400px;
-    height: 400px;
-    margin: 0 auto; /* Center the container */
+    width: 300px;
+    height: 500px;
+    margin: auto; 
     border-radius: 10px;
+    object-fit: contain;
     overflow: hidden;
 }
   
@@ -57,7 +58,7 @@
   
 .final-board-container img:last-child {
     position: absolute;
-    bottom: -15%;
+    bottom: -20%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
