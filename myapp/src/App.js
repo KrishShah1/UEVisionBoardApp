@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import BoardChoice from './components/BoardChoice';
 import CameraComponent from './components/CameraComponent';
 // import FinalBoard from './components/FinalBoard';
@@ -45,47 +47,46 @@ function App() {
     setSelectedBackground(backgroundImage);
   };
 
-
   return (
-    <div className="App">
+    <DndProvider backend={HTML5Backend}>
+      <div className="App">
+        {step === 'start' && (
+          <LandingPage onCreate={handleCreateBoard} />
+        )}
 
-      {step === 'start' && (
-        <LandingPage onCreate={handleCreateBoard} />
-      )}
+        {step === 'camera' && (
+          <div className="webcam-container">
+            <CameraComponent onCapture={handleImageCapture} />
+          </div>
+        )}
 
-      {step === 'camera' && (
-        <div className="webcam-container">
-          <CameraComponent onCapture={handleImageCapture} />
-        </div>
-      )}
+        {step === 'boardChoice' && (
+          <BoardChoice
+            selectedImage={selectedImage}
+            onBackgroundSelect={handleBackgroundSelect}
+            selectedBackground={selectedBackground}
+            onConfirm={handleDragAndDrop}
+            onBack={handleBackToCamera}
+          />
+        )}
 
-      {step === 'boardChoice' && (
-        <BoardChoice
-          selectedImage={selectedImage}
-          onBackgroundSelect={handleBackgroundSelect}
-          selectedBackground={selectedBackground}
-          onConfirm={handleDragAndDrop}
-          onBack={handleBackToCamera}
-        />
-      )}
+        {/* {step === 'finalBoard' && (
+          <FinalBoard 
+            background={selectedBackground} 
+            image={selectedImage} 
+            onBack={handleBackToBoardChoice} 
+            onConfirm={handleDragAndDrop}
+          />
+        )} */}
 
-      {/* {step === 'finalBoard' && (
-        <FinalBoard 
-          background={selectedBackground} 
-          image={selectedImage} 
-          onBack={handleBackToBoardChoice} 
-          onConfirm={handleDragAndDrop}
-        />
-      )} */}
-
-      {step === 'DragAndDrop' && (
-        <DragAndDrop 
-          onBack={handleBackToBoardChoice} 
-          background={selectedBackground}
-        />
-      )}
-
-    </div>
+        {step === 'DragAndDrop' && (
+          <DragAndDrop 
+            onBack={handleBackToBoardChoice} 
+            background={selectedBackground}
+          />
+        )}
+      </div>
+    </DndProvider>
   );
 }
 
