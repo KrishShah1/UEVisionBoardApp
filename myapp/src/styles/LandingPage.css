@@ -50,6 +50,6 @@
     transition: background-color 0.3s;
 }
 
-button:hover {
+.text-card button:hover {
     background-color: #ce9010;
 }
