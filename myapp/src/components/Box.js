@@ -4,7 +4,7 @@ export const Box = ({ title }) => (
   <div style={
     { border: '1px', 
       padding: '1rem',
-      backgroundColor: '#CCCC00A0' }}>
+      backgroundColor: '#00AA00A0' }}>
     {title}
   </div>
 )

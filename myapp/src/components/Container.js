@@ -1,8 +1,9 @@
-import update from 'immutability-helper'
-import { useCallback, useState } from 'react'
-import { useDrop } from 'react-dnd'
-import { DraggableBox } from './DraggableBox.js'
-import { ItemTypes } from './ItemTypes.js'
+import update from 'immutability-helper';
+import { useCallback, useState } from 'react';
+import { useDrop } from 'react-dnd';
+import { DraggableBox } from './DraggableBox';
+import { ItemTypes } from './ItemTypes';
+
 const styles = {
   width: 800,
   height: 800,
@@ -11,42 +12,43 @@ const styles = {
   backgroundImage: 'url(/2.png)',
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
-}
+};
+
 export const Container = () => {
-  const [boxes, setBoxes] = useState({
-    a: { top: 10, left: 850, title: 'UCDC' },
-    b: { top: 50, left: 850, title: "R'Courses" },
-  })
+  const [boxes, setBoxes] = useState({});
+
   const moveBox = useCallback(
-    (id, left, top) => {
-      setBoxes(
-        update(boxes, {
+    (id, left, top, title) => {
+      setBoxes((prevBoxes) =>
+        update(prevBoxes, {
           [id]: {
-            $merge: { left, top },
+            $set: { left, top, title },
           },
-        }),
-      )
+        })
+      );
     },
-    [boxes],
-  )
+    []
+  );
+
   const [, drop] = useDrop(
     () => ({
       accept: ItemTypes.BOX,
       drop(item, monitor) {
-        const delta = monitor.getDifferenceFromInitialOffset()
-        let left = Math.round(item.left + delta.x)
-        let top = Math.round(item.top + delta.y)
-        moveBox(item.id, left, top)
-        return undefined
+        const delta = monitor.getDifferenceFromInitialOffset();
+        let left = Math.round(item.left + delta.x);
+        let top = Math.round(item.top + delta.y);
+        moveBox(item.id, left, top, item.title);
+        return undefined;
       },
     }),
-    [moveBox],
-  )
+    [moveBox]
+  );
+
   return (
     <div ref={drop} style={styles}>
       {Object.keys(boxes).map((key) => (
         <DraggableBox key={key} id={key} {...boxes[key]} />
       ))}
     </div>
-  )
-}
+  );
+};
