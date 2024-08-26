@@ -78,7 +78,6 @@
     display: flex;
     overflow: hidden;
     box-shadow: 0 0 10px 5px #888888;
-    border-radius: 1em;
     position: relative;
 }
 
@@ -89,14 +88,14 @@
 
 .selfie  {
     position: absolute;
-    top: 0%;
-    height: 60%;
+    top: 25%;
+    height: 50%;
 }
 
 .webcam{
     position: absolute;
-    top: 0%;
-    height: 60%;
+    top: 25%;
+    height: 50%;
 }
 
 .side {

@@ -4,7 +4,7 @@ import '../styles/CameraPage.css';
 
 const CameraPage = ({ Confirm }) => {
 
-  const [selectedTheme, setSelectedTheme] = useState('/images/theme3.png');
+  const [selectedTheme, setSelectedTheme] = useState('/images/themes/theme1.png');
   const [selectedSelfie, setSelectedSelfie] = useState(null);
   const [countdown, setCountdown] = useState(0);
   const webcamRef = useRef(null);
@@ -21,7 +21,7 @@ const CameraPage = ({ Confirm }) => {
     retakeButton.classList.add('hidden');
     confirmButton.classList.add('hidden');
     captureButton.classList.remove('hidden');
-    setSelectedTheme('/images/theme3.png');
+    // setSelectedTheme('/images/theme3.png');
     setSelectedSelfie('');
   }
 
@@ -57,6 +57,12 @@ const CameraPage = ({ Confirm }) => {
     Confirm(selectedSelfie, selectedTheme);
   }
 
+  const importImages = (r) => {
+    return r.keys().map(r);
+  };
+  
+  const themes = importImages(require.context('../../public/images/themes', false, /\.(png|jpe?g|svg)$/));
+
   return (
     <div className='camera-page'>
       <div className='header'>
@@ -64,22 +70,10 @@ const CameraPage = ({ Confirm }) => {
       </div>
       <div className='body'>
         <div className='left-container'>
-          <div className='theme-select'>              
-              <img className='theme1' src='/images/theme1.png' alt='theme1' onClick={updateTheme}></img>
-              <img className='theme2' src='/images/theme2.png' alt='theme2' onClick={updateTheme}></img>
-              <img className='theme3' src='/images/theme3.png' alt='theme3' onClick={updateTheme}></img>
-              <img className='theme4' src='/images/theme1.png' alt='theme4' onClick={updateTheme}></img>
-              <img className='theme5' src='/images/theme2.png' alt='theme5' onClick={updateTheme}></img>
-              <img className='theme6' src='/images/theme3.png' alt='theme6' onClick={updateTheme}></img>
-              <img className='theme7' src='/images/theme1.png' alt='theme7' onClick={updateTheme}></img>
-              <img className='theme8' src='/images/theme2.png' alt='theme8' onClick={updateTheme}></img>
-              <img className='theme9' src='/images/theme3.png' alt='theme9' onClick={updateTheme}></img>
-              <img className='theme10' src='/images/theme1.png' alt='theme10' onClick={updateTheme}></img>
-              <img className='theme11' src='/images/theme2.png' alt='theme11' onClick={updateTheme}></img>
-              <img className='theme12' src='/images/theme3.png' alt='theme12' onClick={updateTheme}></img>
-              <img className='theme13' src='/images/theme1.png' alt='theme13' onClick={updateTheme}></img>
-              <img className='theme14' src='/images/theme2.png' alt='theme14' onClick={updateTheme}></img>
-              <img className='theme15' src='/images/theme3.png' alt='theme15' onClick={updateTheme}></img>
+          <div className='theme-select'>   
+            {themes.map((theme, index) => (
+              <img key={index} src={theme} alt={`image-${index}`} onClick={updateTheme}/>
+            ))}
           </div>
         </div>
         <div className='right-container'>
