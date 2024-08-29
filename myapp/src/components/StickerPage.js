@@ -5,6 +5,8 @@ import jsPDF from 'jspdf';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import Draggable from 'react-draggable';
+
 
 const StickerPage = ({ selfie, theme, Restart }) => {
 
@@ -114,7 +116,7 @@ const StickerPage = ({ selfie, theme, Restart }) => {
             };
         }
 
-        setShowRestart(true);
+        setTimeout(() => {setShowRestart(true)}, 2000);
     }
 
     const handleClose = () => {
@@ -140,19 +142,6 @@ const StickerPage = ({ selfie, theme, Restart }) => {
                                         onDragStart={(event) => event.dataTransfer.setData('stickerSrc', src)}
                                     />
                                 ))}
-                                {/* <StickerList />  */}
-                                {/* {stickers.map((sticker, index) => (
-                                    <img key={index} src={sticker} alt={`image-${index}`}/>
-                                ))}
-                                {stickers.map((sticker, index) => (
-                                    <img key={index} src={sticker} alt={`image-${index}`}/>
-                                ))}
-                                {stickers.map((sticker, index) => (
-                                    <img key={index} src={sticker} alt={`image-${index}`}/>
-                                ))}
-                                {stickers.map((sticker, index) => (
-                                    <img key={index} src={sticker} alt={`image-${index}`}/>
-                                ))} */}
                             </div>
                         </div>
                         <div className='right-container'>
@@ -168,11 +157,12 @@ const StickerPage = ({ selfie, theme, Restart }) => {
                                     console.log("error loading theme")
                                 )}
                                 <div className='sticker-canvas' onDrop={handleDrop} onDragOver={handleDragOver}>
-                                    {stickers.map((sticker, index) => (
-                                        <img key={index} src={sticker.src} alt={`sticker-${index}`}style={{left: sticker.x,top: sticker.y,}}/>
-                                    ))}
+                                        {stickers.map((sticker, index) => (
+                                            <Draggable onMouseDown={(e) => {e.preventDefault()}}>
+                                                <img key={index} src={sticker.src} alt={`sticker-${index}`}style={{left: sticker.x,top: sticker.y,}} />
+                                            </Draggable>
+                                        ))}
                                 </div>
-                                {/* <Canvas droppedStickers={droppedStickers} onDrop={handleDrop} /> */}
                             </div>
                             <button className='button pink clear' onClick={clear}>Clear</button>
                             <button className='button green finish' onClick={screenshotAndPopup}>Finish</button>

@@ -81,13 +81,15 @@
 
 .final-selfie {
     position: absolute;
-    top: 25%;
+    top: 0;
     height: 50%;
+    pointer-events: none;
 }
 
 .final-theme {
     position: absolute;
     height: 100%;
+    pointer-events: none;
 }
 
 .sticker-canvas {
@@ -99,6 +101,7 @@
 .sticker-canvas img {
     position: absolute;
     height: 100px;
+    cursor: move;
 }
 
 .button {

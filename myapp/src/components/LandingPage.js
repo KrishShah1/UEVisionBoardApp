@@ -1,20 +1,40 @@
 import React from 'react';
 import '../styles/LandingPage.css';
+import { IoColorPaletteOutline } from "react-icons/io5";
+import { IoCameraOutline } from "react-icons/io5";
+import { RiEmojiStickerLine } from "react-icons/ri";
+import { IoPrintOutline } from "react-icons/io5";
+import { IoIosArrowForward } from "react-icons/io";
 
 const LandingPage = ({ Create }) => {
 
   return (
     <div className='landing-page'>
-      <img className='background-image' src="images/background.png" alt='UCR Background'></img>
-      <div className='text-card'>
-        <h1>Welcome to the UCR Undergraduate Education Visioning Space</h1>
-        {/* <div className='instructions'>
-          <h2>Choose a Theme</h2>
-          <h2>Take a Selfie</h2>
-          <h2>Customize With Stickers</h2>
-          <h2>Print Your Poster</h2>
-        </div> */}
-        <button onClick={Create}>Create Your Vision</button>
+      <img className='background-image' src="images/background.jpg" alt='UCR Background'></img>
+      <div className='main'>
+        <h1 className='card'>Welcome to the UCR Undergraduate Education Vision Space!</h1>
+        <div className='instructions'>
+          <div className='card item'>
+            <IoColorPaletteOutline className='icon'/>
+            <h2>Choose<br/>A<br/>Theme</h2>
+          </div>
+          <IoIosArrowForward className='card arrow'/>
+          <div className='card item'>
+            <IoCameraOutline className='icon'/>
+            <h2>Take<br/>A<br/>Selfie</h2>
+          </div>
+          <IoIosArrowForward className='card arrow'/>
+          <div className='card item'>
+            <RiEmojiStickerLine className='icon'/>
+            <h2>Customize<br/>With<br/>Stickers</h2>
+          </div>
+          <IoIosArrowForward className='card arrow'/>
+          <div className='card item'>
+            <IoPrintOutline className='icon'/>
+            <h2>Print<br/>Your<br/>Poster</h2>
+          </div>
+        </div>
+        <button className='card' onClick={Create}>Create Your Vision</button>
       </div>
     </div>
   );
