@@ -173,13 +173,13 @@ const StickerPage = ({ selfie, theme, Restart }) => {
                             <div className='opacity'/>
                             <div className='form'>
                                 <IoIosCloseCircleOutline className='close' onClick={handleClose}/>
-                                <h3>Email not working, leave empty</h3>
+                                {/* <h3>Email not working, leave empty</h3>
                                 <input 
                                     type="email" 
                                     value={email} 
                                     onChange={(e) => setEmail(e.target.value)} 
                                     placeholder="email (optional)"
-                                />
+                                /> */}
                                 <button className='button green print' onClick={PrintAndEmail}>Print</button>
                                 {showRestart && (
                                     <button className='button green restart' onClick={Restart}>Restart</button>
