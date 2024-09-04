@@ -128,7 +128,7 @@
     left: 0;
 }
 
-.finish {
+.print {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -196,16 +196,6 @@
     font-size: 3em;
 }
 
-.print {
-    z-index: 4;
-}
-
 .canvas {
     z-index: 5;
-}
-
-.restart {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
 }
