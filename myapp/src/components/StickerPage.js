@@ -50,38 +50,7 @@ const StickerPage = ({ selfie, theme, Restart }) => {
         setShowPopup(false);
     };
 
-    const handlePrint = () => {
-        const elementToPrint = document.getElementById('elementToPrint'); // Element to be printed
-      
-        // Ensure the element exists before proceeding
-        if (elementToPrint) {
-          html2canvas(elementToPrint, {
-            scale: 2, // Increase resolution
-            useCORS: true, // Handle cross-origin content
-          }).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png'); // Convert canvas to an image
-      
-            const pdf = new jsPDF('p', 'pt', 'tabloid'); // Create a PDF (portrait, tabloid size)
-            const imgWidth = pdf.internal.pageSize.getWidth();
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
-            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight); // Add the image to the PDF
-      
-            // Open print dialog after ensuring PDF content is loaded
-            pdf.autoPrint(); 
-            window.open(pdf.output('bloburl')); // This line opens the print dialog
-      
-            // Optional: Save the PDF
-            // pdf.save('screenshot.pdf');
-          }).catch((err) => {
-            console.error('Error generating canvas or PDF:', err);
-          });
-        } else {
-          console.error('Element to print not found');
-        }
-      }
-
-      const screenshotAndPrint = async () => {
+    const screenshotAndPrint = async () => {
         const screenshotElement = sectionRef.current;
     
         // Capture the element as a canvas
@@ -125,7 +94,7 @@ const StickerPage = ({ selfie, theme, Restart }) => {
         iframe.src = pdfUrl; // This ensures the PDF is correctly loaded into the iframe
 
         setTimeout(() => {setShowPopup(true)}, 1000);
-        
+
     };
 
     return (
