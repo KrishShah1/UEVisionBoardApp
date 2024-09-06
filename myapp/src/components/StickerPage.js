@@ -52,46 +52,54 @@ const StickerPage = ({ selfie, theme, Restart }) => {
 
     const screenshotAndPrint = async () => {
         const screenshotElement = sectionRef.current;
-    
-        // Capture the element as a canvas
         const canvas = await html2canvas(screenshotElement);
         const image = canvas.toDataURL('image/png');
     
         // Create a PDF and add the image to it
-        const tempPdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'in',
-            format: 'tabloid' // 11" x 17" format
-        });
-    
+        const tempPdf = new jsPDF({orientation: 'portrait', unit: 'in', format: 'tabloid'});
         const pdfWidth = tempPdf.internal.pageSize.getWidth();
         const pdfHeight = tempPdf.internal.pageSize.getHeight();
         tempPdf.addImage(image, 'PNG', 0, 0, pdfWidth, pdfHeight);
     
-        // Output the PDF as a blob
         const blob = await tempPdf.output('blob');
-    
-        // Create an object URL for the blob
         const pdfUrl = URL.createObjectURL(blob);
     
-        // Create an invisible iframe
-        let iframe = document.createElement('iframe');
-        iframe.style.position = 'absolute';
-        iframe.style.top = '-10000px'; // Move it far out of view
-        document.body.appendChild(iframe);
+        // Detect if the browser is Chrome
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
     
-        iframe.onload = () => {
-            // Wait until the iframe is fully loaded before printing
-            iframe.contentWindow.focus();
-            iframe.contentWindow.print();
+        if (isChrome) {
+            // Chrome-specific behavior: Open PDF in a new window
+            const newWindow = window.open(pdfUrl);
+            newWindow.onload = () => {
+                newWindow.focus();
+                newWindow.print();
     
-            // Clean up: remove the iframe and revoke the object URL
-            document.body.removeChild(iframe);
-            URL.revokeObjectURL(pdfUrl);
-        };
-    
-        // Write the PDF content to the iframe's document
-        iframe.src = pdfUrl; // This ensures the PDF is correctly loaded into the iframe
+                // Cleanup: revoke the object URL
+                URL.revokeObjectURL(pdfUrl);
+            };
+        } else {
+            // Create an invisible iframe
+            let iframe = document.createElement('iframe');
+            iframe.style.position = 'absolute';
+            iframe.style.top = '-10000px'; // Move it far out of view
+            iframe.src = pdfUrl;
+        
+            // Append the iframe to the body
+            document.body.appendChild(iframe);
+        
+            // Give the iframe time to load (important for Chrome)
+            iframe.onload = () => {
+                // Trigger print dialog manually on Chrome
+                setTimeout(() => {
+                    iframe.contentWindow.focus();
+                    iframe.contentWindow.print();
+        
+                    // Clean up: remove the iframe and revoke the object URL
+                    document.body.removeChild(iframe);
+                    URL.revokeObjectURL(pdfUrl);
+                }, 500); // Delay for Chrome to render the content before printing
+            };
+        }
 
         setTimeout(() => {setShowPopup(true)}, 1000);
 
