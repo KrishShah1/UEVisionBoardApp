@@ -123,10 +123,10 @@ const StickerPage = ({ selfie, theme, Restart }) => {
     
         // Write the PDF content to the iframe's document
         iframe.src = pdfUrl; // This ensures the PDF is correctly loaded into the iframe
+
+        setTimeout(() => {setShowPopup(true)}, 1000);
+        
     };
-
-        // setTimeout(() => {setShowPopup(true)}, 1000);
-
 
     return (
         <>
