@@ -1,13 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import '../styles/CameraPage.css';
+import { FaRegCircle } from "react-icons/fa";
 
 const CameraPage = ({ Confirm }) => {
 
   const [selectedTheme, setSelectedTheme] = useState('/images/themes/theme1.png');
+  const [showScotty, setShowScotty] = useState(false);
   const [selectedSelfie, setSelectedSelfie] = useState(null);
   const [countdown, setCountdown] = useState(0);
   const webcamRef = useRef(null);
+
 
   const updateTheme = (event) => {
     let imgSrc = event.target.src;
@@ -21,7 +24,6 @@ const CameraPage = ({ Confirm }) => {
     retakeButton.classList.add('hidden');
     confirmButton.classList.add('hidden');
     captureButton.classList.remove('hidden');
-    // setSelectedTheme('/images/theme3.png');
     setSelectedSelfie('');
   }
 
@@ -62,6 +64,7 @@ const CameraPage = ({ Confirm }) => {
   };
   
   const themes = importImages(require.context('../../public/images/themes', false, /\.(png|jpe?g|svg)$/));
+  const scotty = importImages(require.context('../../public/images/scotty', false, /\.(png|jpe?g|svg)$/));
 
   return (
     <div className='camera-page'>
@@ -70,10 +73,21 @@ const CameraPage = ({ Confirm }) => {
       </div>
       <div className='body'>
         <div className='left-container'>
+          <div className='opt-selector'>
+            <button className={`opt opt-selfie ${showScotty ? '' : 'blue'}`} onClick={() => {setShowScotty(false)}}>Selfie</button>
+            <button className={`opt opt-scotty ${showScotty ? 'blue' : ''}`} onClick={() => {setShowScotty(true)}}>Scotty</button>
+          </div>
           <div className='theme-select'>   
-            {themes.map((theme, index) => (
-              <img key={index} src={theme} alt={`image-${index}`} onClick={updateTheme}/>
-            ))}
+            {!showScotty && (
+              themes.map((theme, index) => (
+                <img key={index} src={theme} alt={`image-${index}`} onClick={updateTheme}/>
+              ))
+            )}
+            {showScotty && (
+              scotty.map((theme, index) => (
+                <img key={index} src={theme} alt={`image-${index}`} onClick={updateTheme}/>
+              ))
+            )}
           </div>
         </div>
         <div className='right-container'>
@@ -96,7 +110,7 @@ const CameraPage = ({ Confirm }) => {
               />
             )}
             <img className='overlay-theme' src={selectedTheme} key={selectedTheme}></img>
-            <svg className='capture-button' onClick={startCountdown} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(255,255,255,1)"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z"></path></svg>
+            <FaRegCircle className='capture-button' onClick={startCountdown}/>
             {countdown !== null && countdown > 0 && (<div className="countdown-animation">{countdown}</div>)}
           </div>
           <button className='hidden side retake' onClick={reset}>Retake</button>

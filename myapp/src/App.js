@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CameraPage from './components/CameraPage';
 import LandingPage from './components/LandingPage';
 import StickerPage from './components/StickerPage';
+import './App.css';
 
 function App() {
 
@@ -25,18 +26,22 @@ function App() {
 
   return (
     <div className="App">
+      <div className='content-pages'>
+        {step === 'start' && (
+          <LandingPage Create={createBoard} />
+        )}
 
-      {step === 'start' && (
-        <LandingPage Create={createBoard} />
-      )}
+        {step === 'camera' && (
+            <CameraPage Confirm={confirmSelfieAndTheme}/>
+        )}
 
-      {step === 'camera' && (
-          <CameraPage Confirm={confirmSelfieAndTheme}/>
-      )}
-
-      {step === 'edit' && (
-        <StickerPage selfie={selfie} theme={theme} Restart={restart}/>
-      )}
+        {step === 'edit' && (
+          <StickerPage selfie={selfie} theme={theme} Restart={restart}/>
+        )}
+      </div>
+      <div className='mobile-disclaimer'>
+        <h1>Please access this<br/>website on a laptop</h1>
+      </div>
 
     </div>
   );

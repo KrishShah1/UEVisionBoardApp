@@ -36,22 +36,27 @@
     width: 50%;
     height: 100%;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .sticker-select {
     max-height: 100%;
-    width: 100%;
+    max-width: 100%;
+    flex-grow: 1;
     overflow: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: center;
-    padding: 1em;
+    align-items: center;
+    padding: 1em 0;
 }
 
 .sticker-select img {
     cursor: move;
-    height: 100px;
+    height: 8em;
     transition: all 0.3s ease;
+    margin: 1em 0;
 }
 
 .sticker-select img:hover {
@@ -81,13 +86,15 @@
 
 .final-selfie {
     position: absolute;
-    top: 25%;
+    top: 0;
     height: 50%;
+    pointer-events: none;
 }
 
 .final-theme {
     position: absolute;
     height: 100%;
+    pointer-events: none;
 }
 
 .sticker-canvas {
@@ -99,6 +106,7 @@
 .sticker-canvas img {
     position: absolute;
     height: 100px;
+    cursor: move;
 }
 
 .button {
@@ -125,7 +133,7 @@
     left: 0;
 }
 
-.finish {
+.print {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -193,16 +201,6 @@
     font-size: 3em;
 }
 
-.print {
-    z-index: 4;
-}
-
 .canvas {
     z-index: 5;
-}
-
-.restart {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
 }
