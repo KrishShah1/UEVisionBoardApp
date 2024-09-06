@@ -50,48 +50,83 @@ const StickerPage = ({ selfie, theme, Restart }) => {
         setShowPopup(false);
     };
 
-    const screenshotAndPrint = async() => {
-        console.log("hello")
+    const handlePrint = () => {
+        const elementToPrint = document.getElementById('elementToPrint'); // Element to be printed
+      
+        // Ensure the element exists before proceeding
+        if (elementToPrint) {
+          html2canvas(elementToPrint, {
+            scale: 2, // Increase resolution
+            useCORS: true, // Handle cross-origin content
+          }).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png'); // Convert canvas to an image
+      
+            const pdf = new jsPDF('p', 'pt', 'tabloid'); // Create a PDF (portrait, tabloid size)
+            const imgWidth = pdf.internal.pageSize.getWidth();
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight); // Add the image to the PDF
+      
+            // Open print dialog after ensuring PDF content is loaded
+            pdf.autoPrint(); 
+            window.open(pdf.output('bloburl')); // This line opens the print dialog
+      
+            // Optional: Save the PDF
+            // pdf.save('screenshot.pdf');
+          }).catch((err) => {
+            console.error('Error generating canvas or PDF:', err);
+          });
+        } else {
+          console.error('Element to print not found');
+        }
+      }
+
+      const screenshotAndPrint = async () => {
         const screenshotElement = sectionRef.current;
+    
+        // Capture the element as a canvas
         const canvas = await html2canvas(screenshotElement);
         const image = canvas.toDataURL('image/png');
-
-        while (!image) {
-            console.log('not image')
-        }
-
+    
         // Create a PDF and add the image to it
-        // Use 'tabloid' for 11" x 17" format
-        const tempPdf = new jsPDF({orientation: 'portrait', unit: 'in', format: 'tabloid'});
+        const tempPdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'in',
+            format: 'tabloid' // 11" x 17" format
+        });
+    
         const pdfWidth = tempPdf.internal.pageSize.getWidth();
         const pdfHeight = tempPdf.internal.pageSize.getHeight();
         tempPdf.addImage(image, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        const output = tempPdf.output('blob');
-        const pdf = URL.createObjectURL(output);
-
-        console.log('3')
-        
-        const iframe = document.createElement('iframe');
+    
+        // Output the PDF as a blob
+        const blob = await tempPdf.output('blob');
+    
+        // Create an object URL for the blob
+        const pdfUrl = URL.createObjectURL(blob);
+    
+        // Create an invisible iframe
+        let iframe = document.createElement('iframe');
         iframe.style.position = 'absolute';
-        iframe.style.width = '0';
-        iframe.style.height = '0';
-        iframe.style.border = 'none';
-        iframe.src = pdf;
-
+        iframe.style.top = '-10000px'; // Move it far out of view
         document.body.appendChild(iframe);
-
-        // Print the content of the iframe
+    
         iframe.onload = () => {
+            // Wait until the iframe is fully loaded before printing
             iframe.contentWindow.focus();
             iframe.contentWindow.print();
-            
-            // Clean up
+    
+            // Clean up: remove the iframe and revoke the object URL
             document.body.removeChild(iframe);
-            URL.revokeObjectURL(pdf);
+            URL.revokeObjectURL(pdfUrl);
         };
+    
+        // Write the PDF content to the iframe's document
+        iframe.src = pdfUrl; // This ensures the PDF is correctly loaded into the iframe
+    };
 
-        setTimeout(() => {setShowPopup(true)}, 1000);
-    }
+        // setTimeout(() => {setShowPopup(true)}, 1000);
+
 
     return (
         <>
