@@ -188,7 +188,7 @@
 .capture-button{
     position: absolute;
     font-size: 5em;
-    margin-top: 6em;
+    top: 75%;
     color: #888888;
     transition: all 0.3s ease;
     z-index: 4;

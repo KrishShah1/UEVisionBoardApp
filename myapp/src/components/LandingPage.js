@@ -14,22 +14,22 @@ const LandingPage = ({ Create }) => {
       <div className='main'>
         <h1 className='card'>Welcome to the UCR Undergraduate Education Vision Space!</h1>
         <div className='instructions'>
-          <div className='card item'>
+          <div className='card item' onClick={Create}>
             <IoColorPaletteOutline className='icon'/>
             <h2>Choose<br/>A<br/>Theme</h2>
           </div>
           <IoIosArrowForward className='card arrow'/>
-          <div className='card item'>
+          <div className='card item' onClick={Create}>
             <IoCameraOutline className='icon'/>
             <h2>Take<br/>A<br/>Selfie</h2>
           </div>
           <IoIosArrowForward className='card arrow'/>
-          <div className='card item'>
+          <div className='card item' onClick={Create}>
             <RiEmojiStickerLine className='icon'/>
             <h2>Customize<br/>With<br/>Stickers</h2>
           </div>
           <IoIosArrowForward className='card arrow'/>
-          <div className='card item'>
+          <div className='card item' onClick={Create}>
             <IoPrintOutline className='icon'/>
             <h2>Print<br/>Your<br/>Poster</h2>
           </div>
