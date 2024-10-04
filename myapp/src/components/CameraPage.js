@@ -96,7 +96,7 @@ const CameraPage = ({ Confirm }) => {
           <div className='selfie-scotty'>
             <IoIosArrowBack className='arrow'/>
             <h2>
-              Take a selfie or use a Scotty avatar
+              Choose to take a selfie<br />or use a Scotty avatar
             </h2>
           </div>
           <div className='choose-theme'>
@@ -107,7 +107,7 @@ const CameraPage = ({ Confirm }) => {
           </div>
           <div className='take-picture'>
             <h2>
-              Frame yourself and capture your vision
+              Frame yourself and<br />capture your vision
             </h2>
             <IoIosArrowForward className='arrow'/>
           </div>
