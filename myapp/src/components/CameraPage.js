@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import '../styles/CameraPage.css';
 import { FaRegCircle } from "react-icons/fa";
+import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 
 const CameraPage = ({ Confirm }) => {
 
@@ -74,8 +76,8 @@ const CameraPage = ({ Confirm }) => {
       <div className='body'>
         <div className='left-container'>
           <div className='opt-selector'>
-            <button className={`opt opt-selfie ${showScotty ? '' : 'blue'}`} onClick={() => {setShowScotty(false)}}>Selfie</button>
-            <button className={`opt opt-scotty ${showScotty ? 'blue' : ''}`} onClick={() => {setShowScotty(true)}}>Scotty</button>
+            <button className={`opt-button opt-selfie ${showScotty ? '' : 'blue'}`} onClick={() => {setShowScotty(false)}}>Selfie</button>
+            <button className={`opt-button opt-scotty ${showScotty ? 'blue' : ''}`} onClick={() => {setShowScotty(true)}}>Scotty</button>
           </div>
           <div className='theme-select'>   
             {!showScotty && (
@@ -88,6 +90,26 @@ const CameraPage = ({ Confirm }) => {
                 <img key={index} src={theme} alt={`image-${index}`} onClick={updateTheme}/>
               ))
             )}
+          </div>
+        </div>
+        <div className='photos-instructions'>
+          <div className='selfie-scotty'>
+            <IoIosArrowBack className='arrow'/>
+            <h2>
+              Take a selfie or use a Scotty avatar
+            </h2>
+          </div>
+          <div className='choose-theme'>
+            <IoIosArrowBack className='arrow'/>
+            <h2>
+              Pick a poster theme
+            </h2>
+          </div>
+          <div className='take-picture'>
+            <h2>
+              Frame yourself and capture your vision
+            </h2>
+            <IoIosArrowForward className='arrow'/>
           </div>
         </div>
         <div className='right-container'>

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import '../styles/StickerPage.css';
+// import '../styles/StickerPage.css';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { IoIosCloseCircleOutline } from "react-icons/io";
