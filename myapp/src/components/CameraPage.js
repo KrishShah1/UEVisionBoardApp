@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, } from 'react';
 import Webcam from 'react-webcam';
 import '../styles/CameraPage.css';
 import { FaRegCircle } from "react-icons/fa";
@@ -82,12 +82,12 @@ const CameraPage = ({ Confirm }) => {
           <div className='theme-select'>   
             {!showScotty && (
               themes.map((theme, index) => (
-                <img key={index} src={theme} alt={`image-${index}`} onClick={updateTheme}/>
+                <img key={index} src={theme} alt={`theme-${index}`} onClick={updateTheme}/>
               ))
             )}
             {showScotty && (
               scotty.map((theme, index) => (
-                <img key={index} src={theme} alt={`image-${index}`} onClick={updateTheme}/>
+                <img key={index} src={theme} alt={`scotty-${index}`} onClick={updateTheme}/>
               ))
             )}
           </div>
@@ -115,7 +115,7 @@ const CameraPage = ({ Confirm }) => {
         <div className='right-container'>
           <div className='overlay-container'>
             {selectedSelfie ? (
-              <img className='selfie' src={selectedSelfie} key={selectedSelfie}></img>
+              <img className='selfie' src={selectedSelfie} key={selectedSelfie} alt=""></img>
             ) : (
               <Webcam
                 className='webcam'
@@ -131,12 +131,12 @@ const CameraPage = ({ Confirm }) => {
                 }}
               />
             )}
-            <img className='overlay-theme' src={selectedTheme} key={selectedTheme}></img>
+            <img className='overlay-theme' src={selectedTheme} key={selectedTheme} alt=""></img>
             <FaRegCircle className='capture-button' onClick={startCountdown}/>
             {countdown !== null && countdown > 0 && (<div className="countdown-animation">{countdown}</div>)}
           </div>
-          <button className='hidden side retake' onClick={reset}>Retake</button>
-          <button className='hidden side confirm' onClick={handleConfirm}>Confirm</button>
+          <button className='hidden button retake' onClick={reset}>Retake</button>
+          <button className='hidden button confirm' onClick={handleConfirm}>Confirm</button>
         </div>
       </div>
     </div>

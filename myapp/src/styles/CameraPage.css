@@ -136,6 +136,7 @@
 
 .right-container {
     flex: 1;
+    width: 45%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -173,7 +174,7 @@
     z-index: 3;
 }
 
-.side {
+.button {
     position: absolute;
     bottom: 0;
     border-radius: 1em;
@@ -225,7 +226,7 @@
 .capture-button{
     position: absolute;
     font-size: 8em;
-    top: 80%;
+    top: 85%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     color: #888888;
